@@ -1,0 +1,177 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.semanticweb.org/user/ontologies/2024/10/untitled-ontology-8"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.semanticweb.org/user/ontologies/2024/10/untitled-ontology-8">
+    <Prefix name="" IRI="http://www.semanticweb.org/user/ontologies/2024/10/untitled-ontology-8/"/>
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="#Base"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Circle"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Dimension"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Formula"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Height"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Quiz"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Radius"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Shape"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Square"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Triangle"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasRelationshipName"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#baseLength"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#formulaContent"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#height"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Dimension1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Formula1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Triangle1"/>
+    </Declaration>
+    <EquivalentClasses>
+        <Class IRI="#Dimension"/>
+        <ObjectIntersectionOf>
+            <ObjectAllValuesFrom>
+                <ObjectProperty IRI="#hasRelationshipName"/>
+                <ObjectIntersectionOf>
+                    <Class IRI="#Dimension"/>
+                    <DataSomeValuesFrom>
+                        <DataProperty IRI="#baseLength"/>
+                        <Datatype abbreviatedIRI="xsd:float"/>
+                    </DataSomeValuesFrom>
+                    <DataSomeValuesFrom>
+                        <DataProperty IRI="#height"/>
+                        <Datatype abbreviatedIRI="xsd:float"/>
+                    </DataSomeValuesFrom>
+                </ObjectIntersectionOf>
+            </ObjectAllValuesFrom>
+            <ObjectExactCardinality cardinality="2">
+                <ObjectProperty IRI="#hasRelationshipName"/>
+            </ObjectExactCardinality>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <SubClassOf>
+        <Class IRI="#Base"/>
+        <Class IRI="#Dimension"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Circle"/>
+        <Class IRI="#Shape"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Height"/>
+        <Class IRI="#Dimension"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Radius"/>
+        <Class IRI="#Dimension"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Square"/>
+        <Class IRI="#Shape"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Triangle"/>
+        <Class IRI="#Shape"/>
+    </SubClassOf>
+    <DisjointClasses>
+        <Class IRI="#Base"/>
+        <Class IRI="#Height"/>
+        <Class IRI="#Radius"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Circle"/>
+        <Class IRI="#Square"/>
+        <Class IRI="#Triangle"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Dimension"/>
+        <Class IRI="#Formula"/>
+        <Class IRI="#Quiz"/>
+        <Class IRI="#Shape"/>
+    </DisjointClasses>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasRelationshipName"/>
+        <NamedIndividual IRI="#Triangle1"/>
+        <NamedIndividual IRI="#Dimension1"/>
+    </ObjectPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#height"/>
+        <NamedIndividual IRI="#Dimension1"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#float">3.0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#height"/>
+        <NamedIndividual IRI="#Dimension1"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#float">5.0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#formulaContent"/>
+        <NamedIndividual IRI="#Formula1"/>
+        <Literal>0.5 * base * height</Literal>
+    </DataPropertyAssertion>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasRelationshipName"/>
+        <Class IRI="#Shape"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasRelationshipName"/>
+        <Class IRI="#Dimension"/>
+    </ObjectPropertyRange>
+    <DataPropertyDomain>
+        <DataProperty IRI="#baseLength"/>
+        <Class IRI="#Dimension"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#height"/>
+        <Class IRI="#Dimension"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="#baseLength"/>
+        <Datatype abbreviatedIRI="xsd:float"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#height"/>
+        <Datatype abbreviatedIRI="xsd:float"/>
+    </DataPropertyRange>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi -->
+

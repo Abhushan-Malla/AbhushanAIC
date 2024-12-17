@@ -1,0 +1,154 @@
+@prefix : <http://www.semanticweb.org/user/ontologies/2024/10/MathOntology/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/user/ontologies/2024/10/MathOntology/> .
+
+<http://www.semanticweb.org/user/ontologies/2024/10/MathOntology> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/user/ontologies/2024/10/MathOntology/hasRelationshipName
+:hasRelationshipName rdf:type owl:ObjectProperty ;
+                     rdfs:range :Dimension .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/user/ontologies/2024/10/MathOntology/baseLength
+:baseLength rdf:type owl:DatatypeProperty ;
+            rdfs:domain :Dimension ;
+            rdfs:range xsd:float .
+
+
+###  http://www.semanticweb.org/user/ontologies/2024/10/MathOntology/formulaContent
+:formulaContent rdf:type owl:DatatypeProperty .
+
+
+###  http://www.semanticweb.org/user/ontologies/2024/10/MathOntology/height
+:height rdf:type owl:DatatypeProperty ;
+        rdfs:domain :Dimension ;
+        rdfs:range xsd:float .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/user/ontologies/2024/10/MathOntology/Base
+:Base rdf:type owl:Class ;
+      owl:equivalentClass [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasRelationshipName ;
+                            owl:allValuesFrom [ owl:intersectionOf ( :Dimension
+                                                                     [ rdf:type owl:Restriction ;
+                                                                       owl:onProperty :baseLength ;
+                                                                       owl:someValuesFrom xsd:float
+                                                                     ]
+                                                                     [ rdf:type owl:Restriction ;
+                                                                       owl:onProperty :height ;
+                                                                       owl:someValuesFrom xsd:float
+                                                                     ]
+                                                                   ) ;
+                                                rdf:type owl:Class
+                                              ]
+                          ] ;
+      rdfs:subClassOf :Dimension .
+
+
+###  http://www.semanticweb.org/user/ontologies/2024/10/MathOntology/Circle
+:Circle rdf:type owl:Class ;
+        rdfs:subClassOf :Shape .
+
+
+###  http://www.semanticweb.org/user/ontologies/2024/10/MathOntology/Dimension
+:Dimension rdf:type owl:Class ;
+           rdfs:subClassOf owl:Thing ;
+           owl:disjointWith :Formula ,
+                            :Quiz .
+
+
+###  http://www.semanticweb.org/user/ontologies/2024/10/MathOntology/Formula
+:Formula rdf:type owl:Class ;
+         rdfs:subClassOf owl:Thing ;
+         owl:disjointWith :Quiz ,
+                          :Shape .
+
+
+###  http://www.semanticweb.org/user/ontologies/2024/10/MathOntology/Height
+:Height rdf:type owl:Class ;
+        rdfs:subClassOf :Dimension .
+
+
+###  http://www.semanticweb.org/user/ontologies/2024/10/MathOntology/Quiz
+:Quiz rdf:type owl:Class ;
+      rdfs:subClassOf owl:Thing ;
+      owl:disjointWith :Shape .
+
+
+###  http://www.semanticweb.org/user/ontologies/2024/10/MathOntology/Radius
+:Radius rdf:type owl:Class ;
+        rdfs:subClassOf :Dimension .
+
+
+###  http://www.semanticweb.org/user/ontologies/2024/10/MathOntology/Shape
+:Shape rdf:type owl:Class ;
+       rdfs:subClassOf owl:Thing .
+
+
+###  http://www.semanticweb.org/user/ontologies/2024/10/MathOntology/Square
+:Square rdf:type owl:Class ;
+        rdfs:subClassOf :Shape .
+
+
+###  http://www.semanticweb.org/user/ontologies/2024/10/MathOntology/Triangle
+:Triangle rdf:type owl:Class ;
+          rdfs:subClassOf :Shape .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/user/ontologies/2024/10/MathOntology/Dimension1
+:Dimension1 rdf:type owl:NamedIndividual ;
+            :baseLength "3.0"^^xsd:float ;
+            :height "5.0"^^xsd:float .
+
+
+###  http://www.semanticweb.org/user/ontologies/2024/10/MathOntology/Formula1
+:Formula1 rdf:type owl:NamedIndividual ;
+          :formulaContent "0.5 * base * height" .
+
+
+###  http://www.semanticweb.org/user/ontologies/2024/10/MathOntology/Triangle1
+:Triangle1 rdf:type owl:NamedIndividual ;
+           :hasRelationshipName :Dimension1 .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Base
+                :Height
+                :Radius
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Circle
+                :Square
+                :Triangle
+              )
+] .
+
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
